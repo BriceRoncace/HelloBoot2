@@ -4,8 +4,8 @@ const promiseExample = () => {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
         const result = Math.random();
-        result > 0.5 ? resolve(result) : reject('Cannot calculate...')
-      }, 500)
+        result > 0.5 ? resolve(result) : reject('Cannot calculate...');
+      }, 500);
     });
   }
 
@@ -21,6 +21,6 @@ const promiseExample = () => {
     .then(r => console.log(`Success: ${r}`))
     .catch(r => console.log(`Failure: ${r}`));
   });
-}
+};
 
 export {promiseExample};

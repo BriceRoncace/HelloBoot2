@@ -2,6 +2,17 @@ import * as log from './console-utils.js';
 
 const colors = ['red', 'green', 'blue'];
 
+const people = [
+    {name: 'Jack', age: 50},
+    {name: 'Michael', age: 9}, 
+    {name: 'John', age: 40}, 
+    {name: 'Ann', age: 19}, 
+    {name: 'Bob', age: 78}, 
+    {name: 'Elizabeth', age: 16}
+  ];
+  
+const teenagerPredicate = (person) => person.age > 12 && person.age < 20;
+
 const forEachExample = () => {
   log.title('forEach');
   log.out('Given the array: ', colors);
@@ -158,24 +169,13 @@ const filterExample = () => {
 };
 
 const findExample = () => {
-  const people = [
-    {name: 'Jack', age: 50},
-    {name: 'Michael', age: 9}, 
-    {name: 'John', age: 40}, 
-    {name: 'Ann', age: 19}, 
-    {name: 'Bob', age: 78}, 
-    {name: 'Elizabeth', age: 16}
-  ];
-  
-  const teenager = (person) => person.age > 12 && person.age < 20;
-
   log.title('find');
   log.out('Given the array: ', people);
-  log.out('and the function: const teenager = (person) => person.age > 12 && person.age < 20;');
+  log.out('and the function: const teenagerPredicate = (person) => person.age > 12 && person.age < 20;');
   log.lineSpacer();
 
   log.out('console.log(people.find(tennager);');
-  log.out(people.find(teenager));
+  log.out(people.find(teenagerPredicate));
   log.lineSpacer();
   
   log.out('console.log(people.find(p => p.age < 10);');
@@ -184,9 +184,64 @@ const findExample = () => {
 };
 
 function everyExample() {
+  log.title('every');
+  log.out('Given the array: ', people);
+  log.out('and the function: const teenagerPredicate = (person) => person.age > 12 && person.age < 20;');
+  log.lineSpacer();
   
+  log.out('console.log(people.every(teenagerPredicate));');
+  log.out(people.every(teenagerPredicate));
+  log.lineSpacer();
+  
+  log.out('console.log(people.every(p => p.age > 3));');
+  log.out(people.every(p => p.age > 3));
 }
 
+function someExample() {
+  log.title('some');
+  log.out('Given the array: ', people);
+  log.out('and the function: const teenagerPredicate = (person) => person.age > 12 && person.age < 20;');
+  log.lineSpacer();
 
+  log.out('console.log(people.some(teenagerPredicate));');
+  log.out(people.some(teenagerPredicate));
+  log.lineSpacer();
+  
+  log.out('console.log(people.some(p => p.name === "Bob"));');
+  log.out(people.some(p => p.name === 'Bob'));
+  log.lineSpacer();
+  
+  log.out('console.log(people.some(p => p.name === "Mary"));');
+  log.out(people.some(p => p.name === 'Mary'));
+  log.lineSpacer();
+}
 
-export {forEachExample, mapExample, filterExample, findExample}
+function reduceExample() {
+  const array = [1, 2, 3, 4];
+  const sum = (acc, val) => acc + val;
+  const product = (acc, val) => acc * val;
+  
+  log.title('reduce');
+  log.out('Given the array: ', array);
+  log.out('And: const sum = (acc, val) => acc + val;');
+  log.out('And: const product = (acc, val) => acc * val;');
+  log.lineSpacer();
+ 
+  log.out('console.log(array.reduce(sum, 0));');
+  log.out(array.reduce(sum, 0));
+  log.lineSpacer();
+  
+  log.out('console.log(array.reduce(product, 1));');
+  log.out(array.reduce(product, 1));
+  log.lineSpacer();
+}
+
+export {
+  forEachExample, 
+  mapExample, 
+  filterExample, 
+  findExample, 
+  everyExample, 
+  someExample, 
+  reduceExample
+}

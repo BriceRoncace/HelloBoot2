@@ -27,7 +27,7 @@ const destructuringExample = () => {
       age: 33,
       children: 3,
       profession: 'teacher'
-    }
+    };
     
     console.log('Consider person object', person);
     printBasicInfo(person);
@@ -35,7 +35,6 @@ const destructuringExample = () => {
 
   destructoringArray();
   destructoringObject();
-
-}
+};
 
 export {destructuringExample};
