@@ -1,5 +1,6 @@
 package gov.idaho.isp.helloboot2.controller;
 
+import gov.idaho.isp.helloboot2.user.User;
 import javax.servlet.http.HttpServletRequest;
 import org.apache.commons.lang3.SystemUtils;
 import org.slf4j.Logger;
@@ -9,19 +10,20 @@ import org.springframework.core.SpringVersion;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestAttribute;
 
 @Controller
 public class IndexController {
   private static final Logger logger = LoggerFactory.getLogger(IndexController.class);
 
   @GetMapping("/")
-  public String index(HttpServletRequest req, Model m) {
+  public String index(HttpServletRequest req, @RequestAttribute User user, Model m) {
     logger.debug("Inside index \"/\" get mapping handler method.");
 
     addJavaDetails(m);
     addServerDetails(req, m);
     addSpringDetails(m);
-    m.addAttribute("msg", "Hello!  Spring Boot is up and running.");
+    m.addAttribute("msg", "Hello, " + user.getFirstName() + "!  Spring Boot is up and running.");
     return "index";
   }
 

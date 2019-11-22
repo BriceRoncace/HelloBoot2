@@ -2,6 +2,9 @@ package gov.idaho.isp.helloboot2;
 
 import gov.idaho.isp.helloboot2.security.CsrfExceptionAccessDeniedHandler;
 import gov.idaho.isp.helloboot2.security.CustomDatabaseUserDetailsService;
+import gov.idaho.isp.helloboot2.security.CustomInMemoryUserDetailsManager;
+import gov.idaho.isp.helloboot2.user.User;
+import java.util.Set;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -11,7 +14,6 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.access.AccessDeniedHandler;
@@ -44,16 +46,35 @@ public class SecurityDevConfig extends WebSecurityConfigurerAdapter {
 
   @Override
   protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-    auth.userDetailsService(customDatabaseUserDetailsService).passwordEncoder(getPasswordEncoder());
-    auth.inMemoryAuthentication().withUser(User.builder().passwordEncoder(p -> getPasswordEncoder().encode(p)).username("user").password("u").roles("USER"));
+    configureDatabaseAuthentication(auth);
+    configureInMemoryAuthentication(auth);
   }
-
+  
+  private void configureDatabaseAuthentication(AuthenticationManagerBuilder auth) throws Exception {
+    auth.userDetailsService(customDatabaseUserDetailsService).passwordEncoder(getPasswordEncoder());
+  }
+  
+  private void configureInMemoryAuthentication(AuthenticationManagerBuilder auth) throws Exception {
+    auth.userDetailsService(new CustomInMemoryUserDetailsManager(buildInMemoryUser()));
+  }
+  
   @Bean
   public DaoAuthenticationProvider getDaoAuthProvider(CustomDatabaseUserDetailsService customDatabaseUserDetailsService ) {
     DaoAuthenticationProvider provider = new DaoAuthenticationProvider();
     provider.setUserDetailsService(customDatabaseUserDetailsService);
     provider.setPasswordEncoder(getPasswordEncoder());
     return provider;
+  }
+  
+  private User buildInMemoryUser() {
+    User user = new User();
+    user.setAuthorities(Set.of(User.Auth.USER));
+    user.setFirstName("User");
+    user.setLastName("Local");
+    user.setEmail("blank-email@email.com");
+    user.setUsername("user");
+    user.setPassword(getPasswordEncoder().encode("u"));
+    return user;
   }
 
   @Bean

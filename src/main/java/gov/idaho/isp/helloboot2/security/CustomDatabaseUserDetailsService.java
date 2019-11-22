@@ -18,7 +18,6 @@ public class CustomDatabaseUserDetailsService implements UserDetailsService {
   @Override
   public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
     User user = userRepository.findByUsernameIgnoreCase(username);
-    System.out.println("Loaded user by username: " + user);
     if (user == null) {
       throw new UsernameNotFoundException("User not found with username [" + username + "]");
     }

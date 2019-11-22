@@ -5,7 +5,7 @@
   <jsp:attribute name="body">
     
     <h3 class="text-center">${msg}</h3>
-    <p class="text-center">You are logged on as <strong>${user.username}</strong></p>
+    <p class="text-center">You are logged on as <strong>${user.fullName}</strong></p>
     
     <div class="container">
       <div class="card-deck mb-3 text-center">
