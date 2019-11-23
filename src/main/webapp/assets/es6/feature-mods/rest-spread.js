@@ -21,13 +21,13 @@ function restSpreadExample() {
     const array2 = [{name:'Bob'}, {name:'Jim'}, {name:'Bo'}];
     const copyOfArray2 = [...array2];
     log.out('is it really a shallow copy?');
-    log.out('array2[0].name = ' + array2[0].name);
-    log.out('copyOfArray2[0].name = ' + copyOfArray2[0].name);
+    log.out('array2[0].name: ' + array2[0].name);
+    log.out('copyOfArray2[0].name: ' + copyOfArray2[0].name);
     log.out('Copy of', array2, 'is', copyOfArray2);
     log.out('Now modifying array2[0].name');
     array2[0].name='Bobby-bobby-bo-bah-bee';
-    log.out('array2[0].name = ' + array2[0].name);
-    log.out('copyOfArray2[0].name = ' + copyOfArray2[0].name);
+    log.out('array2[0].name: ' + array2[0].name);
+    log.out('copyOfArray2[0].name: ' + copyOfArray2[0].name);
     console.log('Copy of', array2, 'is', copyOfArray2);
     log.lineSpacer();
   }

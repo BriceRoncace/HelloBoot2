@@ -1,4 +1,6 @@
-// See https://zendev.com/2018/10/01/javascript-arrow-functions-how-why-when.html
+// See 
+// https://zendev.com/2018/10/01/javascript-arrow-functions-how-why-when.html
+// https://stackoverflow.com/q/41085189/225217
 
 import * as log from './console-utils.js';
 
