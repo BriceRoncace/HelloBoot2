@@ -112,8 +112,8 @@ function asyncAwaitExample2() {
 };
 
 export {
+  callbackHellExample,
   promiseExample, 
   asyncAwaitExample, 
-  asyncAwaitExample2, 
-  callbackHellExample
+  asyncAwaitExample2
 };

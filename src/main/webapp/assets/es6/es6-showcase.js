@@ -1,11 +1,12 @@
 import {arrowFunctionExample} from './feature-mods/arrow-functions.js';
 import {forEachExample, mapExample, filterExample, findExample, everyExample, someExample, reduceExample} from './feature-mods/array-helpers.js';
-import {objectLiteralExample} from './feature-mods/object-literal.js';
-import {defaultArgExample} from './feature-mods/default-args.js'
-import {restSpreadExample} from './feature-mods/rest-spread.js'
-import {destructuringExample} from './feature-mods/destructuring.js'
-import {callbackHellExample, promiseExample, asyncAwaitExample, asyncAwaitExample2} from './feature-mods/promise.js'
-import {fetchExample} from './feature-mods/fetch.js'
+import {objectLiteralExample} from './feature-mods/object-literal.js';;
+import {defaultArgExample} from './feature-mods/default-args.js';
+import {restSpreadExample} from './feature-mods/rest-spread.js';
+import {destructuringExample} from './feature-mods/destructuring.js';
+import {callbackHellExample, promiseExample, asyncAwaitExample, asyncAwaitExample2} from './feature-mods/promise.js';
+import {noWaitPromiseExample} from './feature-mods/no-wait-promise.js';
+import {fetchExample} from './feature-mods/fetch.js';
 
 document.getElementById('arrowFunction').addEventListener('click', arrowFunctionExample);
 document.getElementById('forEach').addEventListener('click', forEachExample);
@@ -23,4 +24,5 @@ document.getElementById('callback-hell').addEventListener('click', callbackHellE
 document.getElementById('promise').addEventListener('click', promiseExample);
 document.getElementById('async-await').addEventListener('click', asyncAwaitExample);
 document.getElementById('async-await2').addEventListener('click', asyncAwaitExample2);
+document.getElementById('no-wait-promise').addEventListener('click', noWaitPromiseExample);
 document.getElementById('fetch').addEventListener('click', fetchExample);

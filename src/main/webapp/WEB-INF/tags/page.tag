@@ -25,12 +25,12 @@
     <div class="container">
 
       <nav class="navbar fixed-top navbar-dark bg-primary py-2">
-        <a class="navbar-brand display-8" href="<c:url value="/"/>"><i class="fas fa-thumbs-up"></i> Hello Boot</a>
+        <a class="navbar-brand display-8" href="<c:url value="/"/>"><i class="fas fa-thumbs-up"></i> Hello Boot 2</a>
 
         <c:if test="${not empty user}">
           <div class="ml-auto form-inline">
             <c:if test="${profiles.contains('dev')}">
-              <a href="<c:url value="/h2-console"/>" class="btn btn-sm btn-secondary mr-2"><i class="fas fa-database"></i> H2 Console</a>
+              <a href="<c:url value="/h2-console"/>" target="_blank" class="btn btn-sm btn-secondary mr-2"><i class="fas fa-database"></i> H2 Console</a>
             </c:if>
             
             <a href="<c:url value="/widgets"/>" class="btn btn-sm btn-secondary"><i class="fas fa-cogs"></i> Widgets</a>

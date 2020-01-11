@@ -43,6 +43,8 @@
   
   <h3 id="async-await2">Async/Await (without try-catch)</h3>
   
+  <h3 id="no-wait-promise">No Wait Promise</h3>
+  
   <h3 id="fetch">Fetch</h3>
   
   <script type="module" src="assets/es6/es6-showcase.js"></script>

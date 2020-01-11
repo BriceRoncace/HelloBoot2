@@ -32,7 +32,7 @@ public class SecurityDevConfig extends WebSecurityConfigurerAdapter {
       .antMatchers("/assets/**").permitAll()
       .antMatchers("/h2-console/**").permitAll()
       .anyRequest().authenticated()
-      .and().formLogin().loginPage("/login").permitAll()
+      .and().formLogin().successHandler(new InitialLoginAuthSuccessHandler()).loginPage("/login").permitAll()
       .and().logout().logoutUrl("/logout").permitAll()
       .and().exceptionHandling().accessDeniedHandler(getAccessDeniedHandler());
 
